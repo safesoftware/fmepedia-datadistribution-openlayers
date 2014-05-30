@@ -2,7 +2,7 @@ var myFMEServer, openLayersManager;
 
 $(document).ready(function() {
 	dataDist.init({
-    host : "http://fmepedia2014-safe-software.fmecloud.com",
+    host : "https://fmepedia2014-safe-software.fmecloud.com",
     token : "fb1c3ee6828e6814c75512dd4770a02e73d913b8"
   });
 });
