@@ -1,4 +1,4 @@
-var myFMEServer, openLayersManager;
+var openLayersManager;
 
 $(document).ready(function() {
 	dataDist.init({
@@ -27,7 +27,7 @@ var dataDist = (function () {
 
     // Generates standard form elelemts from
     // the getWorkspaceParameters() return json object
-    myFMEServer.generateFormItems('parameters', json);
+    FMEServer.generateFormItems('parameters', json);
 
     // Add styling classes to all the select boxes
     var selects = parameters.children('select');
@@ -36,13 +36,7 @@ var dataDist = (function () {
     }
 
     // Remove the auto generated GEOM element and label
-    var inputs = parameters.children('input');
-    for(var i = 0; i < inputs.length; i++) {
-      if(inputs[i].name == 'GEOM') {
-        $(inputs[i]).prev().remove();
-        $(inputs[i]).remove();
-      }
-    }
+    $("#parameters .GEOM").remove();
 
   }
 
@@ -112,13 +106,13 @@ var dataDist = (function () {
       var query = document.location.search;
       var mapService = query.split('=');
 
-      myFMEServer = new FMEServer({
+      FMEServer.init({
         server : host,
         token : token
       });
 
       //set up parameters on page
-      myFMEServer.getWorkspaceParameters(repository, workspaceName, buildParams);
+      FMEServer.getWorkspaceParameters(repository, workspaceName, buildParams);
 
       $('#geom').change(function(){
         dataDist.updateQuery();
@@ -143,7 +137,7 @@ var dataDist = (function () {
         }
       }
       params = params.substr(0, params.length-1);
-      myFMEServer.runDataDownload(repository, workspaceName, params, displayResult);
+      FMEServer.runDataDownload(repository, workspaceName, params, displayResult);
       return false;
     },
 
