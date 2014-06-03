@@ -106,6 +106,7 @@ h1 {
 #fmeForm {
 	padding-left: 10px;
 	padding-top: 10px;
+	padding-bottom: 10px;
 	font-weight: bold;
 }
 #fmeForm element {
@@ -145,6 +146,15 @@ h1 {
 }
 
 .input-customSize {
+	width: 95%;
+}
+
+.fmes-form-component{
+	display: block;
+	margin: 0px 0px 10px 0px;
+}
+
+.fmes-form-component select{
 	width: 95%;
 }
 
